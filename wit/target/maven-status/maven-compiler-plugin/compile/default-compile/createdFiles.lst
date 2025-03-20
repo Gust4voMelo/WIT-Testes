@@ -1,0 +1,7 @@
+com\wit\model\repositorio\UsuarioRepositorio.class
+com\wit\model\repositorio\EventoRepositorio.class
+com\wit\service\EventoService.class
+com\wit\model\entidades\Evento.class
+com\wit\model\entidades\Usuario.class
+com\wit\App.class
+com\wit\service\UsuarioService.class
