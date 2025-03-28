@@ -1,14 +1,18 @@
 package com.wit.model.entidades;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+
 public class Evento {
-    private String tipoEvento;   // Ex.: "Publico" ou "Privado"
+    private String tipoEvento;
     private String nomeEvento;
     private String local;
-    private String data;
-    private String hora;
+    private String data; // Exemplo: "02/01/2025"
+    private String hora; // Exemplo: "16:00"
     private String descricao;
-    private String foto;         // Pode ser URL ou caminho do arquivo
-    private String video;        // Pode ser URL ou caminho do arquivo
+    private String foto;
+    private String video;
 
     // Construtor padrão
     public Evento() {}
@@ -73,5 +77,18 @@ public class Evento {
     }
     public void setVideo(String video) {
         this.video = video;
+    }
+
+    // Novo método para converter data/hora em LocalDateTime
+    public LocalDateTime getDataHora() {
+        if (data == null || hora == null) return null;
+
+        try {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+            return LocalDateTime.parse(data + " " + hora, formatter);
+        } catch (DateTimeParseException e) {
+            System.out.println("Erro ao converter data/hora: " + data + " " + hora);
+            return null;
+        }
     }
 }
